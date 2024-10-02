@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import "./Portfolio.css";
+import goku from './images/goku.webp';
+
 
 const Portfolio = () => {
   const [expanded, setExpanded] = useState(false);
@@ -14,7 +16,7 @@ const Portfolio = () => {
     <div className="portfolio-container">
       {!expanded ? (
         <Card 
-          imageSrc="your-image-url.jpg" 
+          imageSrc= {goku}
           title="Click to View Portfolio" 
           onClick={handleCardClick} 
         />
