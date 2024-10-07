@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import "./Portfolio.css";
-import goku from './images/goku.webp';
 
 const Portfolio = () => {
   const [expanded, setExpanded] = useState(false);
@@ -14,13 +13,12 @@ const Portfolio = () => {
     <div className="portfolio-container">
       {!expanded ? (
         <Card 
-          imageSrc={goku} 
           title="Click to View Portfolio" 
           onClick={handleCardClick} 
           size={{ width: '400px', height: '300px' }}
         />
       ) : (
-        <div className="portfolio-grid">
+        <div className="portfolio-grid fade-in"> {/* Apply fade-in class to the container */}
           <Card imageSrc="portfolio-img1.jpg" title="Project 1" size={{ width: '350px', height: '450px' }} />
           <Card imageSrc="portfolio-img2.jpg" title="Project 2" size={{ width: '300px', height: '400px' }} />
           <Card imageSrc="portfolio-img3.jpg" title="Project 3" size={{ width: '400px', height: '500px' }} />
