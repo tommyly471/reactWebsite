@@ -13,6 +13,7 @@ const Portfolio = () => {
     <div className="portfolio-container">
       {!expanded ? (
         <Card 
+          imageSrc={"../images/famphoto.jpg"}
           title="Click to View Portfolio" 
           onClick={handleCardClick} 
           size={{ width: '400px', height: '300px' }}
