@@ -1,4 +1,3 @@
-/* Ensure the grid fills the entire viewport without overlap */
 html, body {
   margin: 0;
   padding: 0;
@@ -10,14 +9,18 @@ html, body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));  /* Ensure minimum width */
-  gap: 10px;  /* Space between cards */
-  width: 100vw;  /* Full width of viewport */
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-auto-rows: auto;
+  gap: 20px;
+  width: 100vw;
   padding: 20px;
   box-sizing: border-box;
 }
 
-/* Ensure that the card content does not overflow */
+.grid-container > div {
+  max-width: 100%;
+}
+
 .card {
   overflow: hidden;
   box-sizing: border-box;
