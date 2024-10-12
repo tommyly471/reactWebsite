@@ -1,47 +1,36 @@
-import React from "react";
-import './App.css';
-
-// Card component
-const Card = () => {
-  // Randomly determine if the card will be horizontal or vertical
-  const isHorizontal = Math.random() > 0.5; // 50% chance for horizontal
-
-  // Randomize width and height based on orientation
-  const randomWidth = isHorizontal
-    ? Math.floor(Math.random() * (350 - 250 + 1)) + 250
-    : Math.floor(Math.random() * (200 - 150 + 1)) + 150;
-  const randomHeight = isHorizontal
-    ? Math.floor(Math.random() * (200 - 150 + 1)) + 150
-    : Math.floor(Math.random() * (300 - 200 + 1)) + 200;
-
-  const cardStyle = {
-    width: `${randomWidth}px`,
-    height: `${randomHeight}px`,
-    backgroundColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`, // Random background color
-    borderRadius: "8px",
-    padding: "20px",
-    margin: "10px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: "16px",
-    boxSizing: "border-box"
-  };
-
-  return <div style={cardStyle}>Random Card</div>;
-};
+import React, { useState } from "react";
+import './App.css';  // Assuming this is for global styles or layout styles
+import Card from './components/Card';  // Importing the Card component from the components folder
 
 // Main App component
 const App = () => {
-  const numberOfCards = 5; // Number of cards to display
+  const numberOfCards = 5; // Total number of cards
+  const [showCards, setShowCards] = useState(false); // State to track if additional cards are visible
+  const [initialCardVisible, setInitialCardVisible] = useState(true); // State for showing the initial card
+
+  // Function to handle the click of the initial card
+  const handleCardClick = () => {
+    setShowCards(true);        // Reveal other cards
+    setInitialCardVisible(false); // Hide the initial card
+  };
 
   return (
-    <div className="grid-container">
-      {Array.from({ length: numberOfCards }).map((_, index) => (
-        <Card key={index} />
-      ))}
+    <div className={`app-container ${initialCardVisible ? 'center-card' : ''}`}>
+      {/* Conditionally render the initial card */}
+      {initialCardVisible && (
+        <div onClick={handleCardClick} className="initial-card">
+          <Card />
+        </div>
+      )}
+
+      {/* Conditionally render the rest of the cards */}
+      {showCards && (
+        <div className="grid-container">
+          {Array.from({ length: numberOfCards - 1 }).map((_, index) => (
+            <Card key={index} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
