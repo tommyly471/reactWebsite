@@ -4,7 +4,7 @@ import Card from './components/Card';  // Importing the Card component from the 
 
 // Main App component
 const App = () => {
-  const numberOfCards = 5; // Total number of cards
+  const numberOfCards = 9; // Total number of cards
   const [showCards, setShowCards] = useState(false); // State to track if additional cards are visible
   const [initialCardVisible, setInitialCardVisible] = useState(true); // State for showing the initial card
 
