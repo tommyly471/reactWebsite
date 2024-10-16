@@ -1,33 +1,42 @@
 import React, { useState } from "react";
-import './App.css';  // Assuming this is for global styles or layout styles
-import Card from './components/Card';  // Importing the Card component from the components folder
+import './App.css';
+import Card from './components/Card';
 
-// Main App component
 const App = () => {
-  const numberOfCards = 9; // Total number of cards
-  const [showCards, setShowCards] = useState(false); // State to track if additional cards are visible
-  const [initialCardVisible, setInitialCardVisible] = useState(true); // State for showing the initial card
+  const numberOfCards = 9;
+  const [showCards, setShowCards] = useState(false);
+  const [initialCardVisible, setInitialCardVisible] = useState(true);
+  const [cards, setCards] = useState(Array.from({ length: numberOfCards - 1 }, (_, index) => index));
 
-  // Function to handle the click of the initial card
   const handleCardClick = () => {
-    setShowCards(true);        // Reveal other cards
-    setInitialCardVisible(false); // Hide the initial card
+    setShowCards(true);
+    setInitialCardVisible(false);
+  };
+
+  const shuffleCards = () => {
+    const shuffled = [...cards].sort(() => Math.random() - 0.5);
+    setCards(shuffled);
   };
 
   return (
-    <div className={`app-container ${initialCardVisible ? 'center-card' : ''}`}>
-      {/* Conditionally render the initial card */}
+    <div className="app-container">
+      <div>
+        {/* Always render the shuffle button for debugging */}
+        <button onClick={shuffleCards} className="shuffle-button">
+          Shuffle Cards
+        </button>
+      </div>
+
       {initialCardVisible && (
         <div onClick={handleCardClick} className="initial-card">
           <Card />
         </div>
       )}
 
-      {/* Conditionally render the rest of the cards */}
       {showCards && (
         <div className="grid-container">
-          {Array.from({ length: numberOfCards - 1 }).map((_, index) => (
-            <Card key={index} />
+          {cards.map((cardIndex) => (
+            <Card key={cardIndex} />
           ))}
         </div>
       )}

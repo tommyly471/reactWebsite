@@ -27,3 +27,11 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+.shuffle-button {
+  display: block; /* Ensure it's displayed */
+  margin: 10px auto; /* Center it */
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
