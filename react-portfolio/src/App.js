@@ -6,6 +6,7 @@ const App = () => {
   const numberOfCards = 9;
   const [showCards, setShowCards] = useState(false);
   const [initialCardVisible, setInitialCardVisible] = useState(true);
+  const [showShuffleButton, setShowShuffleButton] = useState(false);
   const [cards, setCards] = useState(Array.from({ length: numberOfCards - 1 }, (_, index) => index));
 
   const handleCardClick = () => {
@@ -39,6 +40,12 @@ const App = () => {
             <Card key={cardIndex} />
           ))}
         </div>
+      )}
+
+    {showShuffleButton && (
+        <button onClick={shuffleCards}>
+          Shuffle
+        </button>
       )}
     </div>
   );
