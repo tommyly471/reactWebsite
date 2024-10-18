@@ -12,6 +12,7 @@ const App = () => {
   const handleCardClick = () => {
     setShowCards(true);
     setInitialCardVisible(false);
+    setShowShuffleButton(true); // Show shuffle button after initial card is clicked
   };
 
   const shuffleCards = () => {
@@ -21,13 +22,6 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <div>
-        {/* Always render the shuffle button for debugging */}
-        <button onClick={shuffleCards} className="shuffle-button">
-          Shuffle Cards
-        </button>
-      </div>
-
       {initialCardVisible && (
         <div onClick={handleCardClick} className="initial-card">
           <Card />
@@ -42,9 +36,9 @@ const App = () => {
         </div>
       )}
 
-    {showShuffleButton && (
-        <button onClick={shuffleCards}>
-          Shuffle
+      {showShuffleButton && (
+        <button onClick={shuffleCards} className="shuffle-button">
+          Shuffle Cards
         </button>
       )}
     </div>
