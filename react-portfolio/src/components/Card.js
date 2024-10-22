@@ -1,7 +1,7 @@
 import React from 'react';
-import './Card.css';  // This imports the card-specific styles
+import './Card.css'; // This imports the card-specific styles
 
-const Card = () => {
+const Card = ({ text }) => {
   // Randomly determine if the card will be horizontal or vertical
   const isHorizontal = Math.random() > 0.5;
 
@@ -21,9 +21,15 @@ const Card = () => {
   return (
     <div
       className={`card ${isHorizontal ? 'horizontal' : 'vertical'}`}
-      style={{ backgroundColor: randomColor }} // Apply the random color
+      style={{
+        backgroundColor: randomColor, // Apply the random background color
+        color: '#ffffff', // Ensure the text color is white for better contrast
+        padding: '10px', // Add padding for better readability
+        borderRadius: '8px', // Optional: add rounded corners for a nicer look
+        textAlign: 'center', // Center the text
+      }}
     >
-      Random Card
+      <p>{text}</p> {/* Display the text prop inside a paragraph tag */}
     </div>
   );
 };
