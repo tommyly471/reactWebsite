@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Card.css'; // This imports the card-specific styles
 
 const Card = ({ text }) => {
@@ -15,8 +15,8 @@ const Card = ({ text }) => {
     return color;
   };
 
-  // Get a random color for the card background
-  const randomColor = getRandomColor();
+  // Initialize the random color only once using useState
+  const [randomColor] = useState(getRandomColor());
 
   return (
     <div
